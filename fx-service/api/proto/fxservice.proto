@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package payments.v1;
+
+option go_package = "fxservice/rpc/fxservice";
+
+// FXService provides foreign exchange rate quotes
+service FXService {
+  // GetQuote returns an exchange rate quote for converting between currencies
+  rpc GetQuote(GetQuoteRequest) returns (GetQuoteResponse);
+
+  // GetSupportedCurrencies returns list of supported currencies
+  rpc GetSupportedCurrencies(GetSupportedCurrenciesRequest) returns (GetSupportedCurrenciesResponse);
+}
+
+// GetQuoteRequest contains the parameters for getting an FX quote
+message GetQuoteRequest {
+  Currency source_currency = 1;
+  Currency target_currency = 2;
+}
+
+// GetQuoteResponse contains the quote result
+message GetQuoteResponse {
+  double exchange_rate = 1;
+  string expiry_time = 2;
+}
+
+// GetSupportedCurrenciesRequest is empty
+message GetSupportedCurrenciesRequest {}
+
+// GetSupportedCurrenciesResponse contains list of supported currencies
+message GetSupportedCurrenciesResponse {
+  repeated Currency currencies = 1;
+}
+
+// Currency represents supported currency codes
+enum Currency {
+  CURRENCY_UNSPECIFIED = 0;
+  USD = 1;
+  EUR = 2;
+  GBP = 3;
+  JPY = 4;
+  CAD = 5;
+  AUD = 6;
+  CHF = 7;
+  CNY = 8;
+  INR = 9;
+  MXN = 10;
+}
+

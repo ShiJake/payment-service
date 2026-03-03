@@ -1,0 +1,10 @@
+services:
+  server:
+    build:
+      context: .
+      target: server
+    ports:
+      - "${PORT:-4000}:${PORT:-4000}"
+    environment:
+      - PORT=${PORT:-4000}
+

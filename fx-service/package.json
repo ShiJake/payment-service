@@ -1,0 +1,12 @@
+{
+  "name": "fxservice",
+  "version": "1.0.0",
+  "description": "Foreign exchange rate service with currency conversion quotes",
+  "scripts": {
+    "start": "docker-compose up -d --build",
+    "stop": "docker-compose down",
+    "logs": "docker-compose logs -f server",
+    "restart": "docker-compose restart"
+  }
+}
+
